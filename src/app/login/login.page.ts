@@ -32,12 +32,13 @@ export class LoginPage implements OnInit {
       
       }
       else{
-        localStorage.setItem("Fullname", res.payload.Fullname);
+        localStorage.setItem("user_name", res.payload.user_name);
         localStorage.setItem("id", res.payload.user_id);
+        localStorage.setItem("user_roles", res.payload.user_roles);
 
         Swal.fire({
           icon: 'success',
-          text: 'Welcome' +' '+ res.payload.Fullname + '!',
+          text: 'Welcome' +' '+ res.payload.user_name + '!',
           showConfirmButton: false,
           timer: 1500
         })

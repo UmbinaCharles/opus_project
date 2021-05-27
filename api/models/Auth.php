@@ -79,8 +79,8 @@
                 'pword'=>$this->encrypt_password($dt->user_password)
             );
 
-            $sql = "INSERT INTO tbl_user( user_name, user_contact, user_email, user_password) 
-                           VALUES ('$dt->user_name', '$dt->user_contact', '$dt->user_email','$encryptedPassword')";
+            $sql = "INSERT INTO tbl_user( user_name, user_contact, user_roles, user_email, user_password) 
+                           VALUES ('$dt->user_name', '$dt->user_contact', '$dt->user_roles', '$dt->user_email','$encryptedPassword')";
                      
 
                            $data = array(); $code = 0; $errmsg= ""; $remarks = "";
@@ -117,12 +117,13 @@
 				
 					$user_name =$res['data'][0]['user_name'];
 					$user_id = $res['data'][0]['user_id'];
+					$user_roles = $res['data'][0]['user_roles'];
 				
 
 					$code = 200;
 					$remarks = "success";
 					$message = "Logged in successfully";
-					$payload = array("user_id"=>$user_id, "Fullname"=>$user_name);
+					$payload = array("user_id"=>$user_id, "user_name"=>$user_name, "user_roles"=>$user_roles);
 				} else {
 					$payload = null; 
 					$remarks = "failed"; 

@@ -1,21 +1,11 @@
 <ion-content [fullscreen]="true">
-
-    <br>
-    <div class="container" *ngFor=" let users of [1,2,3] ">
-      <h1 class="title">Request:</h1>
-      <hr>
-  
-      <p class="desc">Type:</p>
-      <p class="desc">desription:</p>
-
-      <div id="edit">
-        <ion-button color="warm" class="edit">Edit</ion-button>
-      </div>
-
-      <div id="cancel">
-        <ion-button color="danger" class="cancel">Cancel Request</ion-button>
-      </div>
-  
-    </div>
-
+  <ion-card *ngFor="let req of req">
+    <ion-card-header>{{req.req_date |  date}}</ion-card-header>
+    <ion-card-content>
+      <p>{{req.req_type}}</p>
+      <p>{{req.req_desc}}</p>
+      <p>{{req.user_roles}}</p>
+      <p>{{req.user_name}}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -17,9 +17,17 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
 
+  CValue:String;
+  select:any;
+   onChange(CValue) {
+   this.select = CValue;
+    console.log(this.select);
+ }
+
   userInfo: any = {};
   user_name :any;
   user_contact :any;
+  user_roles: any;
   user_address :any;
   user_email :any;
   user_password :any;
@@ -28,6 +36,7 @@ export class RegisterPage implements OnInit {
   regUser(){
     this.userInfo.user_name = this.user_name;
     this.userInfo.user_contact = this.user_contact;
+    this.userInfo.user_roles = this.user_roles = this.select;
     this.userInfo.user_email = this.user_email;
     this.userInfo.user_password = this.user_password;
 

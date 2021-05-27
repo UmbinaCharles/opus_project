@@ -23,6 +23,7 @@ export class Tab3Page {
 
   ngOnInit(): void {
     this.pullUsers();
+    this.pullReqs();
   }
 
   pullUsers() {
@@ -60,6 +61,17 @@ logout(){
         timer: 1500
       })
     }
+  })
+}
+
+  reqInfo: any = {};
+  reqs: any;
+
+  pullReqs() {
+    this.reqInfo.user_id = localStorage.getItem("id");
+    this.ds.sendApiRequest("reqs", localStorage.getItem("id")).subscribe(data => {
+    this.reqs = data.payload;
+    
   })
 }
 

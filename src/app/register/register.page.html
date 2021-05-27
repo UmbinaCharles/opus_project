@@ -20,6 +20,12 @@
         </ion-item>
       </div>
       <div class="form-input">
+        <ion-select #C (ionChange)="onChange(C.value)" [(ngModel)]="user_roles">
+          <ion-select-option value="Freelancer">Freelancer</ion-select-option>
+          <ion-select-option value="Customer">Customer</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="form-input">
         <ion-item>
           <ion-input type="text" placeholder="Email" [(ngModel)]="user_email"></ion-input>
         </ion-item>

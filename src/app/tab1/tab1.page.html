@@ -1,5 +1,5 @@
 <ion-content>
-    <ion-list>
+    <!-- <ion-list>
         <ion-list-header>
           <ion-label>
             <h2>Select from our services:</h2>
@@ -8,21 +8,31 @@
       
         <ion-item>
           <ion-label>Pick One</ion-label>
-          <ion-select placeholder="Select One">
+          <ion-select placeholder="Select One" [(ngModel)]="req_type">
             <ion-select-option value="photo">Photo Editing</ion-select-option>
             <ion-select-option value="video">Video Editing</ion-select-option>
             <ion-select-option value="write">Writing Jobs</ion-select-option>
           </ion-select>
         </ion-item>
       
-      </ion-list>
+      </ion-list> -->
+      
+      <ion-select #C (ionChange)="onChange(C.value)" [(ngModel)]="req_type">
+        <ion-select-option value="Photo Editing">Photo Editing</ion-select-option>
+        <ion-select-option value="Video Editing">Video Editing</ion-select-option>
+        <ion-select-option value="Writing Jobs">Writing Jobs</ion-select-option>
+      </ion-select>
+
+      <!-- <ion-item class="desc">
+        <ion-textarea placeholder="Describe what you want..." [(ngModel)]="req_type"></ion-textarea>
+      </ion-item> -->
 
       <ion-item class="desc">
-        <ion-textarea placeholder="Describe what you want..."></ion-textarea>
+        <ion-textarea placeholder="Describe what you want..." [(ngModel)]="req_desc"></ion-textarea>
       </ion-item>
 
       <div>
-          <ion-button color="warm">Submit</ion-button>
+          <ion-button (click)="addReq()" color="warm">Submit</ion-button>
       </div>
 </ion-content>
   

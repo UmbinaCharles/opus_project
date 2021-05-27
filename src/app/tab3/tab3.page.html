@@ -15,8 +15,17 @@
 
     <p class="desc">Contact: {{ users.user_contact }}</p>
     <p class="desc">Email: {{ users.user_email }} </p>
+    <p class="desc">Role: {{ users.user_roles }} </p>
 
   </div>
+
+  <p>This is my posts:</p>
+  <ion-card *ngFor="let reqs of reqs">
+    <ion-card-header>{{reqs.req_type}}</ion-card-header>
+    <ion-card-header>{{reqs.req_desc}}</ion-card-header>
+    <ion-card-header>{{reqs.user_name}}</ion-card-header>
+    <ion-card-header>{{reqs.user_roles}}</ion-card-header>
+  </ion-card>
 
   <div class="action-button">
     <ion-button class="logout" (click)="logout()" color="warm">Logout</ion-button>
