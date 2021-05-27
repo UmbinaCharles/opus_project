@@ -21,10 +21,14 @@
 
   <p>This is my posts:</p>
   <ion-card *ngFor="let reqs of reqs">
-    <ion-card-header>{{reqs.req_type}}</ion-card-header>
-    <ion-card-header>{{reqs.req_desc}}</ion-card-header>
-    <ion-card-header>{{reqs.user_name}}</ion-card-header>
-    <ion-card-header>{{reqs.user_roles}}</ion-card-header>
+    <ion-card-header>{{reqs.req_date |  date}}</ion-card-header>
+    <ion-card-content>
+      <p>{{reqs.req_type}}</p>
+      <p>{{reqs.req_desc}}</p>
+      <p>{{reqs.user_name}}</p>
+      <p>{{reqs.user_roles}}</p>
+      <ion-button class="cancel" color="danger">Cancel request</ion-button>
+    </ion-card-content>
   </ion-card>
 
   <div class="action-button">

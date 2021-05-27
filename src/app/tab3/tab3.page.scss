@@ -25,7 +25,7 @@ ion-toolbar {
 
 }
 
-ion-button {
+.logout {
     color: darkslategray;
     background-color: lightgreen;
     font-size: 20px;
@@ -34,4 +34,8 @@ ion-button {
     height: 50px;
     align-items: center;
     margin-top: 40px;
+}
+
+.cancel {
+    padding-left: 17px;
 }
