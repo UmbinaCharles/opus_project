@@ -1,17 +1,21 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <br>
+    <div class="container" *ngFor=" let users of [1,2,3] ">
+      <h1 class="title">Request:</h1>
+      <hr>
+  
+      <p class="desc">Type:</p>
+      <p class="desc">desription:</p>
+
+      <div id="edit">
+        <ion-button color="warm" class="edit">Edit</ion-button>
+      </div>
+
+      <div id="cancel">
+        <ion-button color="danger" class="cancel">Cancel Request</ion-button>
+      </div>
+  
+    </div>
+
 </ion-content>

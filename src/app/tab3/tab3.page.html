@@ -1,17 +1,27 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="slides ion-margin-bottom">
+    
+    <ion-label *ngFor=" let users of users">
+      <h3>Welcome,</h3>
+      <h1>{{ users.user_name }}</h1>
+      </ion-label>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  </div>
+  <br>
+  <div class="container" *ngFor=" let users of users ">
+    <h1 class="title">Profile Information:</h1>
+    <hr>
+
+    <p class="desc">Contact: {{ users.user_contact }}</p>
+    <p class="desc">Email: {{ users.user_email }} </p>
+
+  </div>
+
+  <div class="action-button">
+    <ion-button class="logout" (click)="logout()" color="warm">Logout</ion-button>
+  </div>
+
+
+
 </ion-content>

@@ -1,17 +1,28 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+          <ion-label>
+            <h2>Select from our services:</h2>
+          </ion-label>
+        </ion-list-header>
+      
+        <ion-item>
+          <ion-label>Pick One</ion-label>
+          <ion-select placeholder="Select One">
+            <ion-select-option value="photo">Photo Editing</ion-select-option>
+            <ion-select-option value="video">Video Editing</ion-select-option>
+            <ion-select-option value="write">Writing Jobs</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+      </ion-list>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <ion-item class="desc">
+        <ion-textarea placeholder="Describe what you want..."></ion-textarea>
+      </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <div>
+          <ion-button color="warm">Submit</ion-button>
+      </div>
 </ion-content>
+  
