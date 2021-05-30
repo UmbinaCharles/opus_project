@@ -67,6 +67,11 @@
 						}
 	
 						break;
+					
+						case 'delReq':
+							$d = json_decode(base64_decode(file_get_contents("php://input")));
+							echo json_encode($post->delReq($d), JSON_PRETTY_PRINT);
+						break;
 			}
 		break;
 

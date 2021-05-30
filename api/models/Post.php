@@ -29,6 +29,21 @@ class Post{
         return $this->gm->sendPayload($payload, $remarks, $message, $code);
     }
 
+    public function delReq($d) {
+        $data = $d;
+        $req_id = $data->req_id;
+        $res = $this->gm->delete('tbl_req', $data, "req_id = '$req_id'");
+        if ($res['code'] == 200) {
+			$payload = $res['data'];
+			$remarks = "success";
+			$message = "Successfully retrieved requested data";
+		} else {
+			$payload = null;
+			$remarks = "failed";
+			$message = $res['errmsg'];
+		}
+    }
+
 
 
 

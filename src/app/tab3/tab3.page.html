@@ -27,7 +27,7 @@
       <p>{{reqs.req_desc}}</p>
       <p>{{reqs.user_name}}</p>
       <p>{{reqs.user_roles}}</p>
-      <ion-button class="cancel" color="danger">Cancel request</ion-button>
+      <ion-button class="cancel" color="danger" (click)="delReq(reqs.req_id)">Cancel request</ion-button>
     </ion-card-content>
   </ion-card>
 

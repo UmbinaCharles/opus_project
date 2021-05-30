@@ -75,4 +75,12 @@ logout(){
   })
 }
 
+async delReq(e) {
+  this.reqInfo.req_id = e;
+      this.ds.sendApiRequest("delReq", JSON.parse(JSON.stringify(this.reqInfo))).subscribe(data => {
+        this.pullReqs();
+      });
+      
+}
+
 }

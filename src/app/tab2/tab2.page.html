@@ -1,4 +1,7 @@
 <ion-content [fullscreen]="true">
+  <div class="search">
+    <ion-searchbar></ion-searchbar>
+  </div>
   <ion-card *ngFor="let req of req">
     <ion-card-header>{{req.req_date |  date}}</ion-card-header>
     <ion-card-content>
