@@ -16,19 +16,20 @@ const routes: Routes = [
         loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+        path: 'profile',
+        loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
       },
+      // Kelangan ba 2 redirects? parang redundant na
       {
         path: '',
-        redirectTo: '/tabs/tab3',
+        redirectTo: '/tabs/profile',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/main/tabs/tab3',
+    redirectTo: '/main/tabs/profile',
     pathMatch: 'full'
   }
 ];

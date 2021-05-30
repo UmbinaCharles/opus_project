@@ -1,25 +1,19 @@
 <ion-content>
 
-  <div class="slides ion-margin-bottom">
-    
+  <div class="nameplace">
     <ion-label *ngFor=" let users of users">
-      <h3>Welcome,</h3>
-      <h1>{{ users.user_name }}</h1>
-      </ion-label>
-
+      <span><h1 class="name">{{ users.user_name }}</h1> <img src="../assets/avatar.jpeg" alt="" class="avatar" /></span>
+    </ion-label>
   </div>
-  <br>
+
   <div class="container" *ngFor=" let users of users ">
     <h1 class="title">Profile Information:</h1>
-    <hr>
-
-    <p class="desc">Contact: {{ users.user_contact }}</p>
-    <p class="desc">Email: {{ users.user_email }} </p>
-    <p class="desc">Role: {{ users.user_roles }} </p>
-
+    <p class="desc">Contact : {{ users.user_contact }}</p>
+    <p class="desc">Email : {{ users.user_email }} </p>
+    <p class="desc">Role : {{ users.user_roles }} </p>
   </div>
 
-  <p>This is my posts:</p>
+  <h2 class="post"> My Posts:</h2>
   <ion-card *ngFor="let reqs of reqs">
     <ion-card-header>{{reqs.req_date |  date}}</ion-card-header>
     <ion-card-content>
@@ -31,8 +25,8 @@
     </ion-card-content>
   </ion-card>
 
-  <div class="action-button">
-    <ion-button class="logout" (click)="logout()" color="warm">Logout</ion-button>
+  <div class="logout-container">
+    <ion-button class="logout" (click)="logout()">Logout</ion-button>
   </div>
 
 

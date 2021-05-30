@@ -1,50 +1,50 @@
 ion-content {
-    margin-top: 500px;
+  float: right
 }
 
 ion-header {
-    padding-top: 20px;
-    background-color: white;
+  padding-top: 100px;
+  background-color: #2F4F4F;
 }
 
 .img {
-    margin-left: 70px;
-    width: 50%;
+    width: 75%;
+    margin: auto;  
+    display: block;
+}
+
+.heading {
+  text-align: center;
+}
+
+.login-container {
 }
 
 .welcome {
-    margin-top: 30px;
-    margin-left: 80px;
+  margin-top: 30px;
 }
 
-.reg {
-    color: green;
-    margin-left: 83px;
+.form-input {
+  text-align: center;
+}
+
+.register {
+  text-align: center;
+}
+.reg{
+    color:darkgreen;
 }
 
 ion-icon {
-    position: absolute;
-    margin-top: 15px;
-    margin-left: 10px;
 }
 
 ion-item {
-    width: 200px;
-    position: relative;
-    margin-left: 30px;
 }
 
 ion-button {
-    color: darkslategray;
-    background-color: lightgreen;
-    font-size: 20px;
-    margin-left: 60px;
-    width: 150px;
-    height: 50px;
-    align-items: center;
-    margin-top: 40px;
+  --border-radius: 40px;
 }
 
 .forgot {
-    color: green;
+  color: green;
 }

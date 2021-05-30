@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path:'',
-    redirectTo: 'landing',
+    redirectTo: 'login',
     pathMatch: 'full'
   }
   
