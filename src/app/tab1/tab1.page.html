@@ -1,17 +1,40 @@
 <ion-content>
-      
-      <ion-select #C (ionChange)="onChange(C.value)" [(ngModel)]="req_type" placeholder="Pick one">
-        <ion-select-option value="Photo Editing">Photo Editing</ion-select-option>
-        <ion-select-option value="Video Editing">Video Editing</ion-select-option>
-        <ion-select-option value="Writing Jobs">Writing Jobs</ion-select-option>
-      </ion-select>
+  <ion-select #C (ionChange)="onChange(C.value)" [(ngModel)]="req_type" placeholder="Pick one">
+    <ion-select-option value="Photo Editing">Photo Editing</ion-select-option>
+    <ion-select-option value="Video Editing">Video Editing</ion-select-option>
+    <ion-select-option value="Writing Jobs">Writing Jobs</ion-select-option>
+  </ion-select>
 
-      <ion-item class="desc">
-        <ion-textarea placeholder="Describe what you want..." [(ngModel)]="req_desc"></ion-textarea>
-      </ion-item>
+  <ion-item class="desc">
+    <ion-textarea placeholder="Describe what you want..." [(ngModel)]="req_desc"></ion-textarea>
+  </ion-item>
 
-      <div>
-          <ion-button (click)="addReq()" color="warm">Submit</ion-button>
-      </div>
-</ion-content>
+  <div>
+    <ion-button (click)="addReq()" color="warm">Submit</ion-button>
+  </div>
+
+  <h3 *ngIf="images.length == 0" text-center>Please Select Image!</h3>
+
   
+    <ion-item *ngFor="let img of images; index as pos" text-wrap>
+      <ion-thumbnail slot="start">
+        <ion-img [src]="img.path"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        {{ img.name }}
+      </ion-label>
+      <ion-button slot="end" fill="clear" (click)="startUpload(img)">
+        <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" fill="clear" (click)="deleteImage(img, pos)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  
+
+  <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
+    <ion-icon slot="start" name="camera"></ion-icon>
+    Select Image
+  </ion-button>
+
+</ion-content>

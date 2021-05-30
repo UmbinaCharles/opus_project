@@ -1,8 +1,9 @@
 <ion-content [fullscreen]="true">
   <div class="search">
-    <ion-searchbar></ion-searchbar>
+    <ion-searchbar placeholder="Search..." [(ngModel)]="filterTerm" animated="true"></ion-searchbar>
+
   </div>
-  <ion-card *ngFor="let req of req">
+  <ion-card *ngFor="let req of req | filter:filterTerm">
     <ion-card-header>{{req.req_date |  date}}</ion-card-header>
     <ion-card-content>
       <p>{{req.req_type}}</p>
