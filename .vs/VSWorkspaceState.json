@@ -3,11 +3,6 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\sevice",
-    "\\src\\app\\tab1",
-    "\\src\\app\\tab2",
-    "\\src\\app\\tabs",
-    "\\src\\assets",
     "\\src\\theme"
   ],
   "SelectedNode": "\\src\\app\\app.module.ts",
