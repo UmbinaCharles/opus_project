@@ -1,7 +1,6 @@
 {
   "ExpandedNodes": [
     "",
-    "\\api\\models",
     "\\src",
     "\\src\\app",
     "\\src\\app\\sevice",
@@ -11,6 +10,6 @@
     "\\src\\assets",
     "\\src\\theme"
   ],
-  "SelectedNode": "\\src\\app\\tab1\\tab1.page.html",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
