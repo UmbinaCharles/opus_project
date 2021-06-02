@@ -7,6 +7,8 @@ import { ProfilePage } from './profile.page';
 
 import { ProfilePageRoutingModule } from './profile-routing.module';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -14,6 +16,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
     FormsModule,
     RouterModule.forChild([{ path: '', component: ProfilePage }]),
     ProfilePageRoutingModule,
+    FontAwesomeModule,
   ],
   declarations: [ProfilePage]
 })

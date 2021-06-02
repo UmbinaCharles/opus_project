@@ -2,13 +2,22 @@ ion-content {
   float: right
 }
 
+ion-content {
+  --overflow: hidden;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 ion-header {
-  padding-top: 100px;
+  padding-top: 50px;
   background-color: #2F4F4F;
 }
 
 .img {
-    width: 75%;
+    width: 80%;
     margin: auto;  
     display: block;
 }
@@ -21,7 +30,8 @@ ion-header {
 }
 
 .welcome {
-  margin-top: 30px;
+  margin-top: 20px;
+  font-size: 20px;
 }
 
 .form-input {
@@ -42,7 +52,9 @@ ion-item {
 }
 
 ion-button {
+  border-radius: 40px;
   --border-radius: 40px;
+  box-shadow: 0 5px 5px #777;
 }
 
 .forgot {

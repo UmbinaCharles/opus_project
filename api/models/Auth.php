@@ -41,7 +41,7 @@
 			return str_replace(['+','/','='],['-','_',''], base64_encode($signature));
 		}
 
-        ########################################
+    ########################################
 		# 	USER AUTHENTICATION RELATED METHODS
 		########################################
 		public function encrypt_password($pword) {
@@ -52,14 +52,14 @@
 		}
 
 
-        protected function generate_salt($len) {
+    protected function generate_salt($len) {
 			$urs=md5(uniqid(mt_rand(), true));
 	    $b64String=base64_encode($urs);
 	    $mb64String=str_replace('+','.', $b64String);
 	    return substr($mb64String,0,$len);
 		}
 
-        public function pword_check($pword, $existingHash) {
+    public function pword_check($pword, $existingHash) {
 			$hash=crypt($pword, $existingHash);
 			if($hash===$existingHash){
 				return true;
@@ -67,7 +67,7 @@
 			return false;
 		}
 
-        public function regUser($dt){
+    public function regUser($dt){
 			$payload = "";
 			$remarks = "";
 			$message = "";
@@ -79,9 +79,8 @@
                 'pword'=>$this->encrypt_password($dt->user_password)
             );
 
-            $sql = "INSERT INTO tbl_user( user_name, user_contact, user_roles, user_email, user_password) 
-                           VALUES ('$dt->user_name', '$dt->user_contact', '$dt->user_roles', '$dt->user_email','$encryptedPassword')";
-                     
+            $sql = "INSERT INTO tbl_user( user_name, user_contact, user_interests, user_email, user_password) 
+                           VALUES ('$dt->user_name', '$dt->user_contact', '$dt->user_interests', '$dt->user_email','$encryptedPassword')";                     
 
                            $data = array(); $code = 0; $errmsg= ""; $remarks = "";
                            try {
@@ -96,11 +95,11 @@
                                $errmsg = $e->getMessage();
                                $code = 403;
                            }
-						   return $this->gm->sendPayload($payload, $remarks, $message, $code);                
+						return $this->gm->sendPayload($payload, $remarks, $message, $code);                
         }
 
 
-        public function loginUser($dt){
+      public function loginUser($dt){
 			$payload = $dt;
 			$user_email = $dt->user_email;
 			$user_password = $dt->user_password;
@@ -117,13 +116,12 @@
 				
 					$user_name =$res['data'][0]['user_name'];
 					$user_id = $res['data'][0]['user_id'];
-					$user_roles = $res['data'][0]['user_roles'];
-				
+					$user_interests = $res['data'][0]['user_interests'];				
 
 					$code = 200;
 					$remarks = "success";
 					$message = "Logged in successfully";
-					$payload = array("user_id"=>$user_id, "user_name"=>$user_name, "user_roles"=>$user_roles);
+					$payload = array("user_id"=>$user_id, "user_name"=>$user_name, "user_interests"=>$user_interests);
 				} else {
 					$payload = null; 
 					$remarks = "failed"; 

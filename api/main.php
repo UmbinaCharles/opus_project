@@ -15,9 +15,7 @@
 	}
 
 	switch($_SERVER['REQUEST_METHOD']) {
-		case 'POST':
-
-			
+		case 'POST':			
 
 			switch($req[0]) {
 
@@ -54,24 +52,32 @@
 					} else {
 						echo json_encode($get->pullReq($d), JSON_PRETTY_PRINT);
 					}
+				break;
 
-					break;
-
-					case 'reqs':
-						$d = json_decode(base64_decode(file_get_contents("php://input")));
-						if(count($req)>1) {
+				case 'reqs':
+					$d = json_decode(base64_decode(file_get_contents("php://input")));
+					if(count($req)>1) {
 						   
-							echo json_encode($get->pullReqs($d), JSON_PRETTY_PRINT);
-						} else {
-							echo json_encode($get->pullReqs($d), JSON_PRETTY_PRINT);
-						}
-	
-						break;
+						echo json_encode($get->pullReqs($d), JSON_PRETTY_PRINT);
+					} else {
+						echo json_encode($get->pullReqs($d), JSON_PRETTY_PRINT);
+					}	
+				break;
+
+        case 'reqt':
+					$d = json_decode(base64_decode(file_get_contents("php://input")));
+					if(count($req)>1) {
+						   
+						echo json_encode($get->pullReqt($d), JSON_PRETTY_PRINT);
+					} else {
+						echo json_encode($get->pullReqt($d), JSON_PRETTY_PRINT);
+					}	
+				break;
 					
-						case 'delReq':
-							$d = json_decode(base64_decode(file_get_contents("php://input")));
-							echo json_encode($post->delReq($d), JSON_PRETTY_PRINT);
-						break;
+				case 'delReq':
+					$d = json_decode(base64_decode(file_get_contents("php://input")));
+					echo json_encode($post->delReq($d), JSON_PRETTY_PRINT);
+				break;
 			}
 		break;
 

@@ -7,18 +7,21 @@
     <div class="login-form">
       <div class="form-input">
         <ion-item>
-          <ion-input type="text" placeholder="Full Name" [(ngModel)]="user_name"></ion-input>
+          <ion-input type="text" placeholder="Account Name" [(ngModel)]="user_name"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="number" placeholder="Contact" [(ngModel)]="user_contact"></ion-input>
+          <ion-input type="tel" placeholder="Contact" [(ngModel)]="user_contact"></ion-input>
         </ion-item>
         <ion-item>
+          <ion-input type="text" placeholder="Interests" [(ngModel)]="user_interests"></ion-input>
+        </ion-item>
+        <!--<ion-item>
           <ion-input type="text" placeholder="Job Description"></ion-input>
           <ion-select #C (ionChange)="onChange(C.value)" [(ngModel)]="user_roles">
             <ion-select-option value="Freelancer">Freelancer</ion-select-option>
             <ion-select-option value="Customer">Customer</ion-select-option>
           </ion-select>
-        </ion-item>
+        </ion-item>-->
         <ion-item>
           <ion-input type="text" placeholder="Email" [(ngModel)]="user_email"></ion-input>
         </ion-item>
@@ -27,12 +30,13 @@
         </ion-item>
       </div>
     </div>
+    <br />
     <div class="action-button">
-      <ion-button class="login-button" (click)="regUser()">Register</ion-button>
+      <ion-button class="login-button" color="tertiary" (click)="regUser()">Register</ion-button>
     </div>
     <div class="haveAcc">
       <p class="reg"><span>Already Have an Account?</span></p>
-      <ion-button class="register-button" routerLink="/login">Login Now!</ion-button>
+      <ion-button class="register-button"  routerLink="/login">Login Now!</ion-button>
     </div>
 
   </div>

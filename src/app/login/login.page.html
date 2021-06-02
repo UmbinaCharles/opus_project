@@ -6,19 +6,20 @@
   <div class="login-container">
 
     <div class="heading">
-      <h1 class="welcome">Welcome!</h1>
+      <h1 class="welcome">Your Job is Our Priority</h1>
     </div>
 
     <div class="form-input">
       <ion-item>
-        <ion-icon name="mail-outline"></ion-icon>
-        <ion-input type="email" [(ngModel)]="user_email" placeholder=" Email" required></ion-input>
+        <ion-icon name="mail-outline"></ion-icon>&nbsp;&nbsp;
+        <ion-input type="email" [(ngModel)]="user_email" placeholder=" Email" required> </ion-input>
       </ion-item>
       <ion-item>
-        <ion-icon name="lock-closed-outline" class="icon2"></ion-icon>
-        <ion-input type="password" [(ngModel)]="user_password" placeholder=" Password" required></ion-input>
+        <ion-icon name="lock-closed-outline" class="icon2"></ion-icon>&nbsp;&nbsp;
+        <ion-input type="password" [(ngModel)]="user_password" placeholder=" Password" required> </ion-input>
       </ion-item>
-      <ion-button class="login-button" (click)="loginUser()">Login</ion-button>
+      <br />
+      <ion-button class="login-button" color="tertiary" (click)="loginUser()">Login</ion-button>
     </div>
 
     <div class="register">

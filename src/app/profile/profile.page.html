@@ -1,34 +1,64 @@
-<ion-content>
+<ion-content #content>
 
   <div class="nameplace">
     <ion-label *ngFor=" let users of users">
-      <span><h1 class="name">{{ users.user_name }}</h1> <img src="../assets/avatar.jpeg" alt="" class="avatar" /></span>
+      <img src="../assets/avatar.jpeg" alt="" class="avatar" />
+      <h1 class="name">{{ users.user_name }}</h1>
     </ion-label>
+    <ion-button class="logout" color="danger" size="small" (click)="logout()">
+      <fa-icon icon="sign-out-alt" size=""></fa-icon>
+    </ion-button>
   </div>
-
   <div class="container" *ngFor=" let users of users ">
     <h1 class="title">Profile Information:</h1>
-    <p class="desc">Contact : {{ users.user_contact }}</p>
     <p class="desc">Email : {{ users.user_email }} </p>
-    <p class="desc">Role : {{ users.user_roles }} </p>
+    <p class="desc">Interests : {{ users.user_interests }} </p>
+    <p class="desc">Contact # : {{ users.user_contact }}</p>
   </div>
 
-  <h2 class="post"> My Posts:</h2>
-  <ion-card *ngFor="let reqs of reqs">
-    <ion-card-header>{{reqs.req_date |  date}}</ion-card-header>
+  <br />
+
+  <div class="newpost-container">
+      <h4>
+        New Post:
+      </h4>
+      <ion-item class="title">
+        <ion-input name ="title" type="text" placeholder="Title" [(ngModel)]="req_title" required></ion-input>
+      </ion-item>
+      <ion-item class="desc">
+        <ion-textarea name ="desc" placeholder="Description..." [(ngModel)]="req_desc"></ion-textarea>
+      </ion-item><ion-select name ="req_type"  #C (ionChange)="onChange(C.value)" [(ngModel)]="req_type" placeholder="Buying or Selling?">
+        <ion-select-option value="Buying">Buying</ion-select-option>
+        <ion-select-option value="Selling">Selling</ion-select-option>
+      </ion-select>
+      <ion-item class="bid">
+        <ion-input name="bid" type="number" placeholder="Bidding Price" [(ngModel)]="req_bid" required></ion-input>
+      </ion-item>
+      <ion-item  class="tags">
+        <ion-input name="tags" type="text" placeholder="Tags" [(ngModel)]="req_tags" required></ion-input>
+      </ion-item>
+      <br />
+      <ion-button color="primary" (click)="addReq()">Submit</ion-button>
+  </div>
+
+  <br />
+
+  <h2 class="post"> My Latest Posts:</h2>
+  <ion-card *ngFor="let reqs of reqs" [color]="reqs.req_type == 'Buying' ? 'primary' : 'tertiary'">
+    <ion-card-header><h4>{{reqs.req_title}}</h4></ion-card-header>
     <ion-card-content>
-      <p>{{reqs.req_type}}</p>
+      <fa-icon icon="briefcase" size="4x"></fa-icon>
       <p>{{reqs.req_desc}}</p>
-      <p>{{reqs.user_name}}</p>
-      <p>{{reqs.user_roles}}</p>
-      <ion-button class="cancel" color="danger" (click)="delReq(reqs.req_id)">Cancel request</ion-button>
+      <p>{{reqs.req_type}}</p>
+      <!--<p>{{reqs.user_name}}</p>-->
+      <p>Bidding Price : {{reqs.req_bid| currency:'PHP':true:'1.2-2'}}</p>
+      <p>{{reqs.req_tags}}</p>
+      <p>Bumps : {{reqs.req_bump}}</p>
+      <p>{{reqs.req_date | date}}</p>
+      <ion-button size="small" class="cancel" color="danger" (click)="delReq(reqs.req_id)">Cancel request</ion-button>
     </ion-card-content>
   </ion-card>
 
-  <div class="logout-container">
-    <ion-button class="logout" (click)="logout()">Logout</ion-button>
-  </div>
-
-
+    <ion-button class="back" (click)="gotToTop()"><ion-icon name="chevron-up-outline"></ion-icon></ion-button>
 
 </ion-content>

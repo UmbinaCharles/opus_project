@@ -1,10 +1,17 @@
 {
   "ExpandedNodes": [
     "",
+    "\\api",
+    "\\api\\models",
     "\\src",
     "\\src\\app",
-    "\\src\\theme"
+    "\\src\\app\\login",
+    "\\src\\app\\profile",
+    "\\src\\app\\register",
+    "\\src\\app\\sevice",
+    "\\src\\app\\tab1",
+    "\\src\\app\\tabs"
   ],
-  "SelectedNode": "\\src\\app\\app.module.ts",
+  "SelectedNode": "\\src\\app\\profile\\profile.page.ts",
   "PreviewInSolutionExplorer": false
 }

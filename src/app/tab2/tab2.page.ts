@@ -16,15 +16,15 @@ export class Tab2Page {
   }
 
   reqInfo: any = {};
-  user_id: any;
-  req: any;
+  /*user_id: any;*/
+  reqs: any;
 
-  pullReq() {
-    
-    this.ds.sendApiRequest("req", null).subscribe(data => {
-    this.req = data.payload;
-    
+  pullReq() {    
+    this.ds.sendApiRequest("reqt", "Selling").subscribe(data => {
+    this.reqs = data.payload;    
   })
-}
+  }
+
+
 
 }

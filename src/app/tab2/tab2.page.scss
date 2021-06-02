@@ -1,3 +1,56 @@
+ion-content {
+  // overwrite inline styles
+  --offset-bottom: auto !important;
+  --overflow: hidden;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+ion-content {
+  --background: none;
+  background-image: url(/assets/bg.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+ion-searchbar {
+  --background: white;
+  --border-radius: 20px;
+  border-radius: 20px;
+  box-shadow: 0 5px 5px #777;
+}
+
+ion-card {
+  opacity: 0.8;
+  border-radius: 20px;
+  box-shadow: 0 15px 10px #777;
+}
+
+.ion-card:before, .ion-card:after {
+  z-index: -1;
+  position: absolute;
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: #777;
+  box-shadow: 0 15px 10px #777;
+  transform: rotate(-3deg);
+}
+
+.ion-card:after {
+  transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+
 .container {
     padding-top: 20px;
 }

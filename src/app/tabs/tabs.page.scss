@@ -1,4 +1,12 @@
 ion-tab-bar, ion-tab-button {
   --background: #2F4F4F;
   color: white;
+  opacity: 0.9;
+  /*--background-focused: #a0a;
+  --color-selected: #a0a;*/
+}
+
+ion-tab-buttonn-selected, ion-tab-button:hover, ion-tab-buttonn:active, ion-tab-buttonn:focus{
+  --background: white;
+  --color: black;
 }

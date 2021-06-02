@@ -30,7 +30,6 @@ class Get{
     public function pullReq ($d) {
 
 		$sql = "SELECT * FROM tbl_req";
-
 		
 		$res = $this->gm->generalQuery($sql, "No records found");
 		if ($res['code'] == 200) {
@@ -49,6 +48,23 @@ class Get{
 
 		$sql = "SELECT * FROM tbl_req WHERE user_id='$user_id' ";
 
+		
+		$res = $this->gm->generalQuery($sql, "No records found");
+		if ($res['code'] == 200) {
+			$payload = $res['data'];
+			$remarks = "success";
+			$message = "Successfully retrieved requested data";
+		} else {
+			$payload = null;
+			$remarks = "failed";
+			$message = $res['errmsg'];
+		}
+		return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
+	}
+
+  public function pullReqt ($req_type) {
+
+		$sql = "SELECT * FROM tbl_req WHERE req_type='$req_type'";
 		
 		$res = $this->gm->generalQuery($sql, "No records found");
 		if ($res['code'] == 200) {

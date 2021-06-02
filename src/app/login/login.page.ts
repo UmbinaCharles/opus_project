@@ -22,8 +22,8 @@ export class LoginPage implements OnInit {
     this.userInfo.user_email = this.user_email;
     this.userInfo.user_password = this.user_password;
     await this.ds.sendApiRequest("loginUser", this.userInfo).subscribe(res => {
-      if (res.payload == 0) {      
-        alert("Incorrect Credentials");      
+      if (res.remarks == 0) {      
+        alert("Incorrect Credentials");         
       }
       else {
         localStorage.setItem("user_name", res.payload.user_name);
@@ -34,12 +34,21 @@ export class LoginPage implements OnInit {
           text: 'Welcome' + ' ' + res.payload.user_name + '!',
           imageHeight: 20,
           background: '#fff',
-          backdrop:  '#fff',
+          backdrop: '#fff',
           showConfirmButton: false,
           timer: 1500
-        })
+        });
         this.route.navigate(['/main']);
-      }
-    });    
+      }          
+    });
+    Swal.fire({
+      icon: 'error',
+      text: 'Invalid Credentials',
+      imageHeight: 20,
+      background: '#fff',
+      backdrop: '#fff',
+      showConfirmButton: false,
+      timer: 1000
+    }); 
   }
 }

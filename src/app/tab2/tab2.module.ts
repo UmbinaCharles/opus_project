@@ -7,6 +7,8 @@ import { Tab2Page } from './tab2.page';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
@@ -15,7 +17,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CommonModule,
     FormsModule,
     Tab2PageRoutingModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    FontAwesomeModule
   ],
   declarations: [Tab2Page]
 })

@@ -42,12 +42,7 @@ class Post{
 			$remarks = "failed";
 			$message = $res['errmsg'];
 		}
-    }
-
-
-
-
-    
+    } 
 
 
     
