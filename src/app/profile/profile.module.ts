@@ -9,6 +9,8 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   imports: [
     IonicModule,
@@ -17,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RouterModule.forChild([{ path: '', component: ProfilePage }]),
     ProfilePageRoutingModule,
     FontAwesomeModule,
+    Ng2SearchPipeModule
   ],
   declarations: [ProfilePage]
 })

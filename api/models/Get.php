@@ -1,6 +1,5 @@
 <?php
 
-
 class Get{
     protected $gm, $pdo;
 
@@ -8,41 +7,95 @@ class Get{
         $this->pdo = $pdo;
         $this->gm = new GlobalMethods($pdo);
     }
-    //Pull User
-    public function pullUsers ($user_id) {
 
-		$sql = "SELECT * FROM tbl_user WHERE user_id = '$user_id'";
+    //User Operations
+
+    public function pullAllUser ($d) {
+		  $sql = "SELECT * FROM tbl_user";
+		
+		  $res = $this->gm->generalQuery($sql, "No records found");
+		  if ($res['code'] == 200) {
+			  $payload = $res['data'];
+			  $remarks = "success";
+			  $message = "Successfully retrieved requested data";
+		  } else {
+			  $payload = null;
+			  $remarks = "failed";
+			  $message = $res['errmsg'];
+		  }
+		  return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
+	  }
+    
+    public function pullSpecUser ($d) {
+		  $sql = "SELECT * FROM tbl_user WHERE user_id = '$d'";
+		
+		  $res = $this->gm->generalQuery($sql, "No records found");
+		  if ($res['code'] == 200) {
+			  $payload = $res['data'];
+			  $remarks = "success";
+			  $message = "Successfully retrieved requested data";
+		  } else {
+			  $payload = null;
+			  $remarks = "failed";
+			  $message = $res['errmsg'];
+		  }
+		  return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
+	  }
+
+	  //Request Operations    
+
+    public function pullAllReq ($d) {
+
+		$sql = "SELECT * FROM tbl_req ORDER BY req_bump DESC";
 		
 		$res = $this->gm->generalQuery($sql, "No records found");
-		if ($res['code'] == 200) {
-			$payload = $res['data'];
-			$remarks = "success";
-			$message = "Successfully retrieved requested data";
-		} else {
-			$payload = null;
-			$remarks = "failed";
-			$message = $res['errmsg'];
-		}
-		return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
-	}
+		  if ($res['code'] == 200) {
+			  $payload = $res['data'];
+			  $remarks = "success";
+			  $message = "Successfully retrieved requested data";
+		  } else {
+			  $payload = null;
+			  $remarks = "failed";
+			  $message = $res['errmsg'];
+		  }
+		  return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
+	  }
 
-	//Pull Request
-    public function pullReq ($d) {
+    public function pullSpecReq ($d) {
 
-		$sql = "SELECT * FROM tbl_req";
+		$sql = "SELECT * FROM tbl_req WHERE user_id = '$d' ORDER BY req_bump DESC";
 		
 		$res = $this->gm->generalQuery($sql, "No records found");
-		if ($res['code'] == 200) {
-			$payload = $res['data'];
-			$remarks = "success";
-			$message = "Successfully retrieved requested data";
-		} else {
-			$payload = null;
-			$remarks = "failed";
-			$message = $res['errmsg'];
-		}
-		return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
-	}
+		  if ($res['code'] == 200) {
+			  $payload = $res['data'];
+			  $remarks = "success";
+			  $message = "Successfully retrieved requested data";
+		  } else {
+			  $payload = null;
+			  $remarks = "failed";
+			  $message = $res['errmsg'];
+		  }
+		  return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
+	  }
+
+    public function pullSpecReq2 ($d) {
+
+		$sql = "SELECT * FROM tbl_req WHERE req_type = '$d' ORDER BY req_bump DESC";
+		
+		$res = $this->gm->generalQuery($sql, "No records found");
+		  if ($res['code'] == 200) {
+			  $payload = $res['data'];
+			  $remarks = "success";
+			  $message = "Successfully retrieved requested data";
+		  } else {
+			  $payload = null;
+			  $remarks = "failed";
+			  $message = $res['errmsg'];
+		  }
+		  return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
+	  }
+
+    // Comment Operations
 
     public function pullCom ($d) {
 
@@ -61,42 +114,7 @@ class Get{
 		return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
 	}
 
-	public function pullReqs ($user_id) {
 
-		$sql = "SELECT * FROM tbl_req WHERE user_id='$user_id' ";
-
-		
-		$res = $this->gm->generalQuery($sql, "No records found");
-		if ($res['code'] == 200) {
-			$payload = $res['data'];
-			$remarks = "success";
-			$message = "Successfully retrieved requested data";
-		} else {
-			$payload = null;
-			$remarks = "failed";
-			$message = $res['errmsg'];
-		}
-		return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
-	}
-
-  public function pullReqt ($req_type) {
-
-		$sql = "SELECT * FROM tbl_req WHERE req_type='$req_type'";
-		
-		$res = $this->gm->generalQuery($sql, "No records found");
-		if ($res['code'] == 200) {
-			$payload = $res['data'];
-			$remarks = "success";
-			$message = "Successfully retrieved requested data";
-		} else {
-			$payload = null;
-			$remarks = "failed";
-			$message = $res['errmsg'];
-		}
-		return $this->gm->sendPayload($payload, $remarks, $message, $res['code']);
-	}
-
-
-
+  //End of Methods
 }
 ?>

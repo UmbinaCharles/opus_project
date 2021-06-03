@@ -123,9 +123,7 @@
 			}
 			
 			return array("code"=>$code, "errmsg"=>$errmsg);
-		}
-
-		
+		}	
 
 		//PAYLOAD
 
@@ -138,12 +136,7 @@
 				'prepared_by'=>'Unknown Developer',
 				"timestamp"=>date_create());
 		} 
-
 		
-	
-
-		
-	}
-	
+	}	
 
 ?>

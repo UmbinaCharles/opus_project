@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
           background: '#fff',
           backdrop: '#fff',
           showConfirmButton: false,
-          timer: 1500
+          timer: 2000
         });
         this.route.navigate(['main']);
       }          
@@ -48,7 +48,7 @@ export class LoginPage implements OnInit {
       background: '#fff',
       backdrop: '#fff',
       showConfirmButton: false,
-      timer: 1000
+      timer: 700
     }); 
   }
 }
