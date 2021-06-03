@@ -1,11 +1,23 @@
 <ion-header>
-  <h1>Sign up now!</h1>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <h4>Sign up now!</h4>
+      </ion-col>            
+    </ion-row>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="login-section ion-padding">
-    <div class="login-form">
-      <div class="form-input">
+  <ion-grid>
+
+    <ion-card>
+      <ion-card-header>
+        <h1>
+          Money is Green
+        </h1>
+      </ion-card-header>
+      <ion-card-content>
         <ion-item>
           <ion-input type="text" placeholder="Account Name" [(ngModel)]="user_name"></ion-input>
         </ion-item>
@@ -16,29 +28,34 @@
           <ion-input type="text" placeholder="Interests" [(ngModel)]="user_interests"></ion-input>
         </ion-item>
         <!--<ion-item>
-          <ion-input type="text" placeholder="Job Description"></ion-input>
-          <ion-select #C (ionChange)="onChange(C.value)" [(ngModel)]="user_roles">
-            <ion-select-option value="Freelancer">Freelancer</ion-select-option>
-            <ion-select-option value="Customer">Customer</ion-select-option>
-          </ion-select>
-        </ion-item>-->
+        <ion-input type="text" placeholder="Job Description"></ion-input>
+        <ion-select #C (ionChange)="onChange(C.value)" [(ngModel)]="user_roles">
+          <ion-select-option value="Freelancer">Freelancer</ion-select-option>
+          <ion-select-option value="Customer">Customer</ion-select-option>
+        </ion-select>
+      </ion-item>-->
         <ion-item>
           <ion-input type="text" placeholder="Email" [(ngModel)]="user_email"></ion-input>
         </ion-item>
         <ion-item>
           <ion-input type="password" placeholder="Password" [(ngModel)]="user_password"></ion-input>
         </ion-item>
-      </div>
-    </div>
-    <br />
-    <div class="action-button">
-      <ion-button class="login-button" color="tertiary" (click)="regUser()">Register</ion-button>
-    </div>
-    <div class="haveAcc">
-      <p class="reg"><span>Already Have an Account?</span></p>
-      <ion-button class="register-button"  routerLink="/login">Login Now!</ion-button>
-    </div>
+      </ion-card-content>
+      <ion-button class="card-button" color="primary" (click)="regUser()">Register</ion-button>
 
-  </div>
+    </ion-card>
 
+    <ion-row>
+      <ion-col>
+        <h4 id="back-text">
+          Already have an Account?
+        </h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="tertiary" routerLink="/login">Login Now!</ion-button>
+      </ion-col>      
+    </ion-row>    
+  </ion-grid>
 </ion-content>

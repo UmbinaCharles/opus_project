@@ -1,115 +1,12 @@
-ion-content {
-  // overwrite inline styles
-  --offset-bottom: auto !important;
-  --overflow: hidden;
-  overflow: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+#avatar {
+  height: 60px;
+  border-radius: 30px;
 }
 
-ion-content{
-  --background: none;
-  background-image: url(/assets/bg.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-.nameplace {
-  background-color: #2F4F4F;
-  color: white;
-  border-radius: 0 0 20px 20px;
-  padding: 20px;
-  padding-top: 40px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  opacity: 0.8;
-  box-shadow: 0 5px 5px #777;
-}
-
-.name {
-  float: left;
-  margin-left: 30px;
-}
-
-.avatar {
-  height: 40px;
-  border-radius: 20px;
-  float: left;
-  box-shadow: 0 5px 5px #242424;
-}
-
-.logout {
-  color: white;
-  border-radius: 20px;
-  box-shadow: 0 5px 5px #242424;
-}
-
-.title {
-  font-size: 20px;
-
-}
-
-.post {
-  padding-left: 20px;
-  font-size: 20px;
-}
-
-.newpost-container {
-  background-color: white;
-  margin-left: 10px;
-  margin-right: 10px;
-  padding: 10px;
-  border-radius: 20px;
-  opacity: 0.95;
-}
-
-.container {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-h1{
-
-}
-
-.logout-container {
-  background-color: #fff;
-  text-align: center;
-}
-
-ion-button {
-  --border-radius: 20px;
-}
-
-ion-card {
-  opacity: 0.8;
-  border-radius: 20px;
+#post-container {
+  --background: var(--ion-color-tertiary);
   box-shadow: 0 15px 10px #777;
 }
 
-.ion-card:before, .ion-card:after {
-  z-index: -1;
-  position: absolute;
-  bottom: 15px;
-  left: 10px;
-  width: 50%;
-  top: 80%;
-  max-width: 300px;
-  background: #777;
-  box-shadow: 0 15px 10px #777;
-  transform: rotate(-3deg);
-}
 
-.ion-card:after {
-  transform: rotate(3deg);
-  right: 10px;
-  left: auto;
-}
 
-.cancel {
-}

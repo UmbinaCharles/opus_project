@@ -44,6 +44,16 @@
 					echo json_encode($gm->insert("tbl_req",$d), JSON_PRETTY_PRINT);
 				break;
 
+        case 'com':
+					$d = json_decode(base64_decode(file_get_contents("php://input")));
+                    if(count($req)>1) {
+                       
+						echo json_encode($get->pullCom($d), JSON_PRETTY_PRINT);
+					} else {
+						echo json_encode($get->pullCom($d), JSON_PRETTY_PRINT);
+					}
+				break;
+
 				case 'req':
 					$d = json_decode(base64_decode(file_get_contents("php://input")));
                     if(count($req)>1) {
@@ -52,7 +62,7 @@
 					} else {
 						echo json_encode($get->pullReq($d), JSON_PRETTY_PRINT);
 					}
-				break;
+				break;        
 
 				case 'reqs':
 					$d = json_decode(base64_decode(file_get_contents("php://input")));

@@ -38,7 +38,7 @@ export class LoginPage implements OnInit {
           showConfirmButton: false,
           timer: 1500
         });
-        this.route.navigate(['/main']);
+        this.route.navigate(['main']);
       }          
     });
     Swal.fire({

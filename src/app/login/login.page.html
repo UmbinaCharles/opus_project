@@ -1,31 +1,42 @@
-<ion-header class="ion-no-border">
-  <img src="../assets/OPUS-2.png" alt="logo" class="img">
+<ion-header id="splash">
+  <ion-toolbar id="tagline-container">
+    <img src="../assets/OPUS-2.png" alt="logo" id="img">
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="login-container">
-
-    <div class="heading">
-      <h1 class="welcome">Your Job is Our Priority</h1>
-    </div>
-
-    <div class="form-input">
-      <ion-item>
-        <ion-icon name="mail-outline"></ion-icon>&nbsp;&nbsp;
-        <ion-input type="email" [(ngModel)]="user_email" placeholder=" Email" required> </ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-icon name="lock-closed-outline" class="icon2"></ion-icon>&nbsp;&nbsp;
-        <ion-input type="password" [(ngModel)]="user_password" placeholder=" Password" required> </ion-input>
-      </ion-item>
-      <br />
-      <ion-button class="login-button" color="tertiary" (click)="loginUser()">Login</ion-button>
-    </div>
-
-    <div class="register">
-      <p class="reg"><span>No Account Yet? You're Missing Out!</span></p>
-      <ion-button class="register-button" routerLink="/register">Register Now!</ion-button>
-    </div>
-
-  </div>
+  <ion-toolbar>
+    <h id="tagline">Your Job is Our Priority</h>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="mail-outline"></ion-icon>&nbsp;&nbsp;
+          <ion-input type="email" [(ngModel)]="user_email" placeholder=" Email" required> </ion-input>
+        </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="lock-closed-outline"></ion-icon>&nbsp;&nbsp;
+          <ion-input type="password" [(ngModel)]="user_password" placeholder=" Password" required> </ion-input>
+        </ion-item>
+       </ion-col>
+    </ion-row>
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button id="login-button" color="primary" (click)="loginUser()">Login</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <p id="reg-text">No Account Yet? You're Missing Out!</p>
+        <ion-button class="register-button" color="tertiary" routerLink="/register">Register Now!</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

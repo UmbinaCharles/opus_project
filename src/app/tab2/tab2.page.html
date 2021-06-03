@@ -5,28 +5,43 @@
 
 
 
-  <ion-card *ngFor="let reqs of reqs | filter:filterTerm" [color]="reqs.req_type == 'Buying' ? 'primary' : 'tertiary'">
-    <ion-card-header><h4>{{reqs.req_title}}</h4></ion-card-header>
+  <ion-card *ngFor="let reqs of reqs">
+
+    <ion-card-header [color]="reqs.req_type == 'Buying' ? 'secondary' : 'tertiary'">
+      <ion-card-title>
+        <h2>{{reqs.req_title}}</h2>
+        <ion-card-subtitle>
+          Request Type : {{reqs.req_type}}
+        </ion-card-subtitle>
+      </ion-card-title>
+    </ion-card-header>
     <ion-card-content>
-      <fa-icon icon="briefcase" size="4x"></fa-icon>
-      <p>{{reqs.req_desc}}</p>
-      <!--<p>{{reqs.req_type}}</p>-->
-      <p>Posted by : {{reqs.user_name}}</p>
-      <p>Contact # : {{reqs.user_contact}}</p>
-
-      <p>Bidding Price : {{reqs.req_bid| currency:'PHP':true:'1.2-2'}}</p>
-      <p>{{reqs.req_tags}}</p>
-
-      <span><fa-icon icon="star" size="s"></fa-icon></span>
-      <span><fa-icon icon="star" size="s"></fa-icon></span>
-      <span><fa-icon icon="star" size="s"></fa-icon></span>
-      <span><fa-icon icon="star" size="s"></fa-icon></span>
-      <span><fa-icon icon="star" size="s"></fa-icon></span>
-
-      <p>Bumps : {{reqs.req_bump}}</p>
-      <p>{{reqs.req_date | date}}</p>
-      <!--<ion-button size="small" class="cancel" color="danger" (click)="delReq(reqs.req_id)">Cancel request</ion-button>-->
+      <ion-item>
+        <!--<img src="../assets/card-img.PNG" alt="" class="card-image" />-->
+      </ion-item>
+      <ion-item>
+        <h4>{{reqs.req_desc}}</h4>
+      </ion-item>
+      <ion-item>
+        Tags : {{reqs.req_tags}}
+      </ion-item>
+      <!--<ion-item>
+      <p>{{reqs.req_type}}</p>
+    </ion-item>-->
+      <ion-item>
+        Bidding Price : {{reqs.req_bid| currency:'₱ ':true:'1.2-2'}}
+      </ion-item>
+      <ion-item>
+        Bumps : {{reqs.req_bump}}
+      </ion-item>
+      <ion-item>
+        {{reqs.req_date | date}}
+      </ion-item>
     </ion-card-content>
+    <ion-button size="small" class="card-button" (click)="delReq(reqs.req_id)">Bump</ion-button>
+    <ion-button size="small" class="card-button" (click)="delReq(reqs.req_id)">Edit</ion-button>
+    <ion-button size="small" class="card-button" (click)="delReq(reqs.req_id)">Delete</ion-button>
+
   </ion-card>
 
   <!--<ion-card *ngFor="let reqs of reqs" [color]="reqs.req_type == 'Buying' ? 'primary' : 'tertiary'">

@@ -1,64 +1,150 @@
-<ion-content #content>
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <h4>Profile</h4>
+      </ion-col>
+      <ion-col>
+        <ion-button class="logout-button" color="secondary" size="small" (click)="logout()">
+          <fa-icon icon="sign-out-alt" size="sm"></fa-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
 
-  <div class="nameplace">
-    <ion-label *ngFor=" let users of users">
-      <img src="../assets/avatar.jpeg" alt="" class="avatar" />
-      <h1 class="name">{{ users.user_name }}</h1>
-    </ion-label>
-    <ion-button class="logout" color="danger" size="small" (click)="logout()">
-      <fa-icon icon="sign-out-alt" size=""></fa-icon>
-    </ion-button>
-  </div>
-  <div class="container" *ngFor=" let users of users ">
-    <h1 class="title">Profile Information:</h1>
-    <p class="desc">Email : {{ users.user_email }} </p>
-    <p class="desc">Interests : {{ users.user_interests }} </p>
-    <p class="desc">Contact # : {{ users.user_contact }}</p>
-  </div>
+<ion-content>
+  <ion-grid *ngFor="let users of users">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-row>
+            <ion-col>
+              <h1>{{ users.user_name }}</h1>
+            </ion-col>
+            <ion-col>
+              <img src="../assets/avatar.jpeg" alt="" id="avatar" />
+            </ion-col>
+          </ion-row>
+        </ion-card-title>
+        <ion-card-subtitle><p>Profile Information</p></ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <p>Interests : {{ users.user_interests }} </p>
+        </ion-item>
+        <ion-item>
+          <p>Email : {{ users.user_email }} </p>
+        </ion-item>
+        <ion-item>
+          <p>Contact # : {{ users.user_contact }}</p>
+        </ion-item>
+        <ion-item>
+          <p>Stars : &nbsp;</p>
+          <span *ngIf="users.user_trust == 1 || users.user_trust >1"><fa-icon icon="star" size="s"></fa-icon></span>
+          <span *ngIf="users.user_trust == 2 || users.user_trust >2"><fa-icon icon="star" size="s"></fa-icon></span>
+          <span *ngIf="users.user_trust == 3 || users.user_trust >3"><fa-icon icon="star" size="s"></fa-icon></span>
+          <span *ngIf="users.user_trust == 4 || users.user_trust >4"><fa-icon icon="star" size="s"></fa-icon></span>
+          <span *ngIf="users.user_trust == 5 || users.user_trust >5"><fa-icon icon="star" size="s"></fa-icon></span>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-  <br />
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-row>
+            <ion-col>
+              <h4>Post Something New!</h4>
+            </ion-col>
+          </ion-row>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="title">
+          <ion-input name="title" type="text" placeholder="Title" [(ngModel)]="req_title" required></ion-input>
+        </ion-item>
+        <ion-item class="desc">
+          <ion-textarea name="desc" placeholder="Description..." [(ngModel)]="req_desc"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-select name="req_type" okText="Okay" cancelText="Dismiss" #C (ionChange)="onChange(C.value)" [(ngModel)]="req_type" placeholder="Buying or Selling?">
+            <ion-select-option value="Buying">Buying</ion-select-option>
+            <ion-select-option value="Selling">Selling</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="bid">
+          <ion-input name="bid" type="number" placeholder="Bidding Price" [(ngModel)]="req_bid" required></ion-input>
+        </ion-item>
+        <ion-item class="tags">
+          <ion-input name="tags" type="text" placeholder="Tags" [(ngModel)]="req_tags" required></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-button class="card-button" color="primary" (click)="addReq()">Submit</ion-button>
+    </ion-card>
 
-  <div class="newpost-container">
-      <h4>
-        New Post:
-      </h4>
-      <ion-item class="title">
-        <ion-input name ="title" type="text" placeholder="Title" [(ngModel)]="req_title" required></ion-input>
-      </ion-item>
-      <ion-item class="desc">
-        <ion-textarea name ="desc" placeholder="Description..." [(ngModel)]="req_desc"></ion-textarea>
-      </ion-item><ion-select name ="req_type"  #C (ionChange)="onChange(C.value)" [(ngModel)]="req_type" placeholder="Buying or Selling?">
-        <ion-select-option value="Buying">Buying</ion-select-option>
-        <ion-select-option value="Selling">Selling</ion-select-option>
-      </ion-select>
-      <ion-item class="bid">
-        <ion-input name="bid" type="number" placeholder="Bidding Price" [(ngModel)]="req_bid" required></ion-input>
-      </ion-item>
-      <ion-item  class="tags">
-        <ion-input name="tags" type="text" placeholder="Tags" [(ngModel)]="req_tags" required></ion-input>
-      </ion-item>
-      <br />
-      <ion-button color="primary" (click)="addReq()">Submit</ion-button>
-  </div>
+    <ion-row>
+      <ion-col>
+        <ion-item id="post-container">
+          <h4>My Latest Posts:</h4>
+        </ion-item>
+      </ion-col>
+    </ion-row>
 
-  <br />
+    <ion-card *ngFor="let reqs of reqs">
+      <ion-card-header [color]="reqs.req_type == 'Buying' ? 'secondary' : 'tertiary'">
+        <ion-card-title>
+          <h2>{{reqs.req_title}}</h2>
+          <ion-card-subtitle>
+            Request Type : {{reqs.req_type}}
+          </ion-card-subtitle>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <img src="../assets/card-img.PNG" alt="" class="card-image" />
+        </ion-item>
+        <ion-item>
+          <h4>{{reqs.req_desc}}</h4>
+        </ion-item>
+        <ion-item>
+          Tags : {{reqs.req_tags}}
+        </ion-item>
 
-  <h2 class="post"> My Latest Posts:</h2>
-  <ion-card *ngFor="let reqs of reqs" [color]="reqs.req_type == 'Buying' ? 'primary' : 'tertiary'">
-    <ion-card-header><h4>{{reqs.req_title}}</h4></ion-card-header>
-    <ion-card-content>
-      <fa-icon icon="briefcase" size="4x"></fa-icon>
-      <p>{{reqs.req_desc}}</p>
+        <!--<ion-item>
       <p>{{reqs.req_type}}</p>
-      <!--<p>{{reqs.user_name}}</p>-->
-      <p>Bidding Price : {{reqs.req_bid| currency:'PHP':true:'1.2-2'}}</p>
-      <p>{{reqs.req_tags}}</p>
-      <p>Bumps : {{reqs.req_bump}}</p>
-      <p>{{reqs.req_date | date}}</p>
-      <ion-button size="small" class="cancel" color="danger" (click)="delReq(reqs.req_id)">Cancel request</ion-button>
-    </ion-card-content>
-  </ion-card>
+    </ion-item>-->
+        <ion-item>
+          Bidding Price : {{reqs.req_bid| currency:'₱ ':true:'1.2-2'}}
+        </ion-item>
+        <ion-item>
+          Bumps : {{reqs.req_bump}}
+        </ion-item>
+        <ion-item>
+          {{reqs.req_date | date}}
+        </ion-item>
 
-    <ion-button class="back" (click)="gotToTop()"><ion-icon name="chevron-up-outline"></ion-icon></ion-button>
+        <ion-button size="small" class="card-button" (click)="delReq(reqs.req_id)">Bump</ion-button>
+        <ion-button size="small" class="card-button" (click)="delReq(reqs.req_id)">Edit</ion-button>
+        <ion-button size="small" class="card-button" (click)="delReq(reqs.req_id)">Delete</ion-button>
 
+      </ion-card-content>
+      <ion-row *ngFor="let com of com">
+        <div class="speech-bubble" *ngIf="com.req_id == reqs.req_id">
+          <ion-row>
+            <img src="../assets/avatar.jpeg" alt="" class="speech-img" />
+            <p class="speech-text">&nbsp; {{ com.user_name }} : </p>
+            <p class="speech-text">&nbsp; {{ com.com_con }}</p>
+          </ion-row>
+        </div>
+      </ion-row>
+      <ion-item class="desc">
+        <ion-textarea name="desc" placeholder="Comment..." [(ngModel)]="req_desc"></ion-textarea>
+      </ion-item>
+      <ion-button size="small" class="card-button" (click)="delReq(reqs.req_id)">Comment</ion-button>
+    </ion-card>
+
+    <!--<ion-button class="back" (click)="gotToTop()"><ion-icon name="chevron-up-outline"></ion-icon></ion-button>-->
+
+  </ion-grid>
 </ion-content>

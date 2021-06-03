@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { DataService } from "../sevice/data.service"
 import { TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonContent, Platform } from '@ionic/angular';
 import Swal from 'sweetalert2';
 
 
@@ -14,37 +13,26 @@ import Swal from 'sweetalert2';
 })
 export class ProfilePage {
 
+  //Variables of all Database should be here
+
   users: any;
   userInfo: any = {};
   user_id: any;
-  user_Id: any
 
   constructor( private ds: DataService, public route: Router ) {}
 
   @ViewChild('content') callAPIDialog: TemplateRef<any>;
-  @ViewChild('content', { static: false }) content: IonContent;
 
   ngOnInit(): void {
+
+    //Init Methods Here
+
     this.pullUsers();
     this.pullReqs();
+    this.pullCom();
   }
 
-  gotToTop() {
-    this.content.scrollToTop(1000);
-  }
-
-  //postForm: any;
-
-  //reset() {
-  //  this.postForm.reset();
-  //}
-
-  //scrollToTop() {
-  //  this.content.scrollToTop(400);
-  //}
-  //ionViewDidEnter() {
-  //  this.scrollToTop();
-  //}
+  //
 
   pullUsers() {
     this.userInfo.user_Id = localStorage.getItem("id");
@@ -53,7 +41,7 @@ export class ProfilePage {
         this.users = data.payload;
     console.log(this.users);
   })
-}
+  } 
 
 logout(){
 
@@ -110,6 +98,20 @@ logout(){
     this.ds.sendApiRequest("reqs", localStorage.getItem("id")).subscribe(data => {
       this.reqs = data.payload;
     });
+  }
+
+  commInfo: any = {}
+  com: any;
+  com_id: any;
+
+
+  pullCom() {
+    //this.userInfo.user_Id = localStorage.getItem("id");
+    //console.log(this.userInfo);
+    this.ds.sendApiRequest("com", null).subscribe(data => {
+      this.com = data.payload;
+      console.log(this.com);
+    })
   }
 
   async delReq(e) {

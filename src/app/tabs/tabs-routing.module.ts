@@ -4,12 +4,12 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+        path: 'message',
+        loadChildren: () => import('../message/message.module').then(m => m.MessagePageModule)
       },
       {
         path: 'tab2',
@@ -19,18 +19,16 @@ const routes: Routes = [
         path: 'profile',
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
       },
-      // Kelangan ba 2 redirects? parang redundant na
+      {
+        path: 'buying',
+        loadChildren: () => import('../buying/buying.module').then(m => m.BuyingPageModule)
+      },
       {
         path: '',
-        redirectTo: '/tabs/profile',
+        redirectTo: '/main/profile',
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/main/tabs/profile',
-    pathMatch: 'full'
   }
 ];
 
