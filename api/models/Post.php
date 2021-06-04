@@ -17,11 +17,11 @@ class Post{
         $payload = null;
         $remarks = "failed";
         $message = "Unable to retrieve data";
-        $reqInfo = $data->reqInfo;
+        $reqInfo = $data;
         $res = $this->gm->insert('tbl_req', $reqInfo);
         if($res['code']==200) {
             $code = 200;
-            $payload = $res['data'];
+            $payload = $res;
             $remarks = "success";
             $message = "Successfully retrieved data";
         }
@@ -67,13 +67,13 @@ class Post{
       $payload = null;
       $remarks = "failed";
       $message = "Unable to retrieve data";
-      $comInfo = $data->comInfo;
+      $comInfo = $data;
 
       $res = $this->gm->insert('tbl_com', $comInfo);
 
       if($res['code']==200) {
           $code = 200;
-          $payload = $res['data'];
+          $payload = $res;
           $remarks = "success";
           $message = "Successfully retrieved data";
       }
@@ -110,10 +110,5 @@ class Post{
 			$message = $res['errmsg'];
 		}
     }
-
-
-
-
-
     
 }

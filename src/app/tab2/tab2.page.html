@@ -2,40 +2,101 @@
   <ion-toolbar>
     <ion-row>
       <ion-col>
-        <h4>Sell Services!</h4>
+        <p>Creator Hub</p>
       </ion-col>
       <ion-col>
+        <ion-button class="logout-button" color="secondary" size="small">
+          <fa-icon icon="question-circle" size="sm"></fa-icon>
+        </ion-button>
         <ion-button class="logout-button" color="secondary" size="small" (click)="logout()">
           <fa-icon icon="sign-out-alt" size="sm"></fa-icon>
         </ion-button>
       </ion-col>
+      <ion-searchbar animated autocomplete placeholder="Search..." [(ngModel)]="filterTerm"></ion-searchbar>
     </ion-row>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-grid>
-    <ion-row>
-      <ion-item>
-        <ion-searchbar animated autocomplete placeholder="Search..." [(ngModel)]="filterTerm"></ion-searchbar>
-      </ion-item>
-    </ion-row>
+
+    <ion-card>
+      <ion-card-header>
+        <h4>
+          AD SPACE
+        </h4>
+        <ion-card-subtitle>
+          <p>
+            Sponsored Post
+          </p>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <img src="../assets/add.png" alt="" class="card-image" />
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item>
+      <ion-row>
+        <ion-col>
+          <h4>Recommended Requests</h4>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <h2>Poster for Company Party</h2>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <h4>Requested by: Sisko ltd.&nbsp;</h4>
+          <img src="../assets/avatar.jpeg" alt="" class="speech-img" />
+        </ion-item>
+        <ion-item>
+          <h4>Looking for content creator for upcoming company event</h4>
+        </ion-item>
+        <ion-item>
+          Tags : Photoshop Visuals
+        </ion-item>
+        <ion-item>
+          Bumps : 4
+        </ion-item>
+
+        <ion-button size="small" class="card-button"><fa-icon icon="thumbs-up" size="sm"></fa-icon></ion-button>
+        <ion-button size="small" class="card-button"><fa-icon icon="thumbtack" size="sm"></fa-icon></ion-button>
+        <ion-button size="small" class="card-button" color="danger">Report</ion-button>
+        <br />
+        <ion-button size="small" class="card-button">Contact</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item>
+      <ion-row>
+        <ion-col>
+          <h4>Recent Requests</h4>
+        </ion-col>
+      </ion-row>
+    </ion-item>
 
     <ion-card *ngFor="let reqs of reqs | filter : filterTerm">
       <ion-card-header [color]="reqs.req_type == 'Buying' ? 'secondary' : 'tertiary'">
         <ion-card-title>
           <h2>{{reqs.req_title}}</h2>
-          <ion-card-subtitle>
-            Request Type : {{reqs.req_type}}
-          </ion-card-subtitle>
+          <!--<ion-card-subtitle>
+          Request Type : {{reqs.req_type}}
+        </ion-card-subtitle>-->
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
+
+        <!--<ion-item>
+        <img src="../assets/card-img.PNG" alt="" class="card-image" />
+      </ion-item>-->
         <ion-item>
-          <img src="../assets/card-img.PNG" alt="" class="card-image" />
-        </ion-item>
-        <ion-item>
-          <h4>{{reqs.user_name}}</h4>
+          <h4>Requested by: {{reqs.user_name}}</h4>
         </ion-item>
         <ion-item>
           <h4>{{reqs.req_desc}}</h4>
@@ -43,22 +104,26 @@
         <ion-item>
           Tags : {{reqs.req_tags}}
         </ion-item>
-
         <!--<ion-item>
-          <p>{{reqs.req_type}}</p>
-        </ion-item>-->
-        <ion-item>
-          Bidding Price : {{reqs.req_bid| currency:'₱ ':true:'1.2-2'}}
-        </ion-item>
+        <p>{{reqs.req_type}}</p>
+      </ion-item>-->
+        <!--<ion-item>
+        Bidding Price : {{reqs.req_bid| currency:'₱ ':true:'1.2-2'}}
+      </ion-item>-->
         <ion-item>
           Bumps : {{reqs.req_bump}}
+
+
         </ion-item>
+
         <ion-item>
+
+
           {{reqs.req_date | date}}
         </ion-item>
 
         <ion-button size="small" class="card-button"><fa-icon icon="thumbs-up" size="sm"></fa-icon></ion-button>
-        <ion-button *ngIf="users.user_id == reqs.user_id" size="small" class="card-button" >Edit</ion-button>
+        <ion-button *ngIf="users.user_id == reqs.user_id" size="small" class="card-button">Edit</ion-button>
         <ion-button *ngIf="users.user_id == reqs.user_id" size="small" class="card-button" (click)="delReq(reqs.req_id)">Delete</ion-button>
 
       </ion-card-content>
@@ -71,12 +136,14 @@
           </ion-row>
         </div>
       </ion-row>
-      <ion-item>
-        <ion-textarea name="con" placeholder="Comment..." [(ngModel)]="com_con"></ion-textarea>
-      </ion-item>
-
+      <!--<ion-item>
+      <ion-textarea name="con" placeholder="Comment..." [(ngModel)]="com_con"></ion-textarea>
+    </ion-item>-->
       <ion-button size="small" class="card-button" (click)="addCom(reqs.req_id)">Comment</ion-button>
     </ion-card>
+
+
+
   </ion-grid>
 
 </ion-content>

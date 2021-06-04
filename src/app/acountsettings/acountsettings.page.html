@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <h4>Payment Account</h4>
+      </ion-col>
+      <ion-col>
+        <ion-button class="logout-button" color="secondary" size="small" (click)="logout()">
+          <fa-icon icon="sign-out-alt" size="sm"></fa-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-card>
+      <ion-card-header>
+        <h4>
+          Account Information
+        </h4>
+        
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-col>
+            Account Name : ******
+          </ion-col>
+          <ion-col>
+            <fa-icon icon="eye" size="s"></fa-icon>
+          </ion-col>
+        </ion-item>
+        <ion-item>
+          <ion-col>
+            Account Code : ******
+          </ion-col>
+          <ion-col>
+            <fa-icon icon="eye" size="s"></fa-icon>
+          </ion-col>
+        </ion-item>
+        <ion-button class="card-button" color="warning">Request Changes</ion-button>
+        <ion-item>
+          Coins Balance : 241
+        </ion-item>
+        <ion-item>
+          Redeem Coins
+        </ion-item>
+        <ion-item>
+          <ion-input name="title" type="text" placeholder="Redemption Code" required></ion-input>
+        </ion-item>   
+          <ion-button class="card-button">Submit</ion-button>
+        <br />
+          <ion-button class="card-button" routerLink="/main" color="secondary">Back to Profile</ion-button>
+
+      </ion-card-content>
+    </ion-card>
+
+  </ion-grid>
+
+</ion-content>

@@ -2,9 +2,12 @@
   <ion-toolbar>
     <ion-row>
       <ion-col>
-        <h4>Messenger</h4>
+        <h4>Task Board</h4>
       </ion-col>
       <ion-col>
+        <ion-button class="logout-button" color="secondary" size="small">
+          <fa-icon icon="question-circle" size="sm"></fa-icon>
+        </ion-button>
         <ion-button class="logout-button" color="secondary" size="small" (click)="logout()">
           <fa-icon icon="sign-out-alt" size="sm"></fa-icon>
         </ion-button>
@@ -14,51 +17,89 @@
 </ion-header>
 
 <ion-content>
-
   <ion-grid>
-    <ion-row>
-      <div class="speech-bubble">
-        <ion-row>
+    <ion-item>
+      <p>
+        No. Commisions : 2
+      </p>
+    </ion-item>
+
+    <ion-item color="warning">
+      <p>
+        <fa-icon icon="exclamation-triangle" size="sm"></fa-icon>
+          1 Commision nearing deadline
+      </p>
+
+    </ion-item>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <h2>Poster for Company Party</h2>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <h4>Requested by: Sisko ltd.&nbsp;</h4>
           <img src="../assets/avatar.jpeg" alt="" class="speech-img" />
-          <p class="speech-text">&nbsp; erwin : </p>
-          <p class="speech-text">&nbsp; pre wala tayo messenger</p>
-        </ion-row>
-      </div>
-      <div class="speech-bubble">
-        <ion-row>
+        </ion-item>
+        <ion-item>
+          Days Passed : 2
+        </ion-item>
+        <ion-item>
+          Early Bird Bonus Days Left: 2
+        </ion-item>
+        <ion-item>
+          Coins upon Turn Over: 13
+        </ion-item>
+        <ion-item>
+          Revisions : 0
+        </ion-item>
+
+        <!--<ion-item>
+        <h4>Looking for content creator for upcoming company event</h4>
+      </ion-item>
+      <ion-item>
+        Tags : Photoshop Visuals
+      </ion-item>
+      <ion-item>
+        Bumps : 4
+      </ion-item>-->
+
+
+        <ion-button size="small" class="card-button">Turn Over</ion-button>
+        <br />
+        <ion-button size="small" class="card-button">Contact</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <h2>Poster for Company Party</h2>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <h4>Requested by: Sisko ltd.&nbsp;</h4>
           <img src="../assets/avatar.jpeg" alt="" class="speech-img" />
-          <p class="speech-text">&nbsp; charles : </p>
-          <p class="speech-text">&nbsp; aw </p>
-        </ion-row>
-      </div>
-      <div class="speech-bubble">
-        <ion-row>
-          <img src="../assets/avatar.jpeg" alt="" class="speech-img" />
-          <p class="speech-text">&nbsp; william : </p>
-          <p class="speech-text">&nbsp; aw </p>
-        </ion-row>
-      </div>
-      <div class="speech-bubble">
-        <ion-row>
-          <img src="../assets/avatar.jpeg" alt="" class="speech-img" />
-          <p class="speech-text">&nbsp; erwin : </p>
-          <p class="speech-text">&nbsp; sad </p>
-        </ion-row>
-      </div>
-      <div class="speech-bubble">
-        <ion-row>
-          <img src="../assets/avatar.jpeg" alt="" class="speech-img" />
-          <p class="speech-text">&nbsp; charles : </p>
-          <p class="speech-text">&nbsp; sad </p>
-        </ion-row>
-      </div>
-      <div class="speech-bubble">
-        <ion-row>
-          <img src="../assets/avatar.jpeg" alt="" class="speech-img" />
-          <p class="speech-text">&nbsp; william : </p>
-          <p class="speech-text">&nbsp; sad </p>
-        </ion-row>
-      </div>
-    </ion-row>
+        </ion-item>
+        <ion-item>
+          <h4>Looking for content creator for upcoming company event</h4>
+        </ion-item>
+        <ion-item>
+          Tags : Photoshop Visuals
+        </ion-item>
+        <ion-item>
+          Bumps : 4
+        </ion-item>
+
+        <ion-button size="small" class="card-button"><fa-icon icon="thumbs-up" size="sm"></fa-icon></ion-button>
+        <ion-button size="small" class="card-button"><fa-icon icon="thumbtack" size="sm"></fa-icon></ion-button>
+        <ion-button size="small" class="card-button" color="danger">Report</ion-button>
+        <br />
+        <ion-button size="small" class="card-button">Contact</ion-button>
+      </ion-card-content>
+    </ion-card>
   </ion-grid>
 </ion-content>

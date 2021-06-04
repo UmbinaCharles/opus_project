@@ -225,6 +225,11 @@ ion-button {
   box-shadow: none;
 }
 
+.avatar-image{
+    height: 100px;
+    border-radius: 50px;
+}
+
 ion-card {
   opacity: 0.8;
   border-radius: 20px;
@@ -269,6 +274,7 @@ ion-alert.select-alert {
 
   }
 }
+
 
 .speech-bubble {
   position: relative;

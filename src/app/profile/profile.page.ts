@@ -123,7 +123,7 @@ export class ProfilePage {
 
   //Add Requests
 
-  async addReq() {
+  addReq() {
     this.reqInfo.req_type = this.req_type = this.select;
     this.reqInfo.req_title = this.req_title;
     this.reqInfo.req_desc = this.req_desc;
@@ -131,7 +131,9 @@ export class ProfilePage {
     this.reqInfo.user_id = localStorage.getItem("id");
     this.reqInfo.user_name = localStorage.getItem("user_name");
     this.reqInfo.req_tags = this.req_tags;
-    this.reqInfo.req_bump = this.req_bump;
+    /*this.reqInfo.req_bump = this.req_bump;*/
+
+    console.log(this.reqInfo);
 
     this.ds.sendApiRequest("addReq", JSON.parse(JSON.stringify(this.reqInfo))).subscribe(data => {
       this.pullUserReqs();
@@ -207,5 +209,9 @@ export class ProfilePage {
     })
   }    
   //End of Methods
+
+  accountNav() {
+    this.route.navigate(['/acountsettings']);
+  }
 
 }

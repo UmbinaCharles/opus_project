@@ -2,38 +2,149 @@
   <ion-toolbar>
     <ion-row>
       <ion-col>
-        <h4>Buy Services!</h4>
+        <p>Explore</p>
       </ion-col>
       <ion-col>
+        <ion-button class="logout-button" color="secondary" size="small">
+          <fa-icon icon="question-circle" size="sm"></fa-icon>
+        </ion-button>
         <ion-button class="logout-button" color="secondary" size="small" (click)="logout()">
           <fa-icon icon="sign-out-alt" size="sm"></fa-icon>
         </ion-button>
       </ion-col>
     </ion-row>
+    <ion-item>
+      <ion-searchbar animated autocomplete placeholder="Search ..." [(ngModel)]="filterTerm"></ion-searchbar>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
   <ion-grid>
-    <ion-row>
-      <ion-item>
-        <ion-searchbar animated autocomplete placeholder="Search..." [(ngModel)]="filterTerm"></ion-searchbar>
-      </ion-item>
-    </ion-row>
+
+    <!--<ion-item>
+      <ion-row>
+        <ion-col>
+          <h4>Sponsored Post</h4>
+        </ion-col>
+      </ion-row>
+    </ion-item>-->
+
+    <ion-card>
+      <ion-card-header>
+        <h4>
+          AD SPACE
+        </h4>
+        <ion-card-subtitle>
+          <p>
+            Sponsored Post
+          </p>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <img src="../assets/add.png" alt="" class="card-image" />
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item>
+      <ion-row>
+        <ion-col>
+          <h4>Top Creator of the week</h4>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <ion-card>
+      <ion-card-header>
+        <img src="../assets/avatar2.png" alt="" class="avatar-image" />
+        <ion-card-subtitle>
+          <p>
+            <fa-icon icon="check" size="s"></fa-icon>&nbsp;
+            <fa-icon icon="trophy" size="s"></fa-icon>
+          </p>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <h4>
+            Charles Umbina
+          </h4>
+        </ion-item>
+        <ion-item>
+          <p>Karma : &nbsp;</p>
+          <span><fa-icon icon="star" size="s"></fa-icon></span>
+          <span><fa-icon icon="star" size="s"></fa-icon></span>
+          <span><fa-icon icon="star" size="s"></fa-icon></span>
+          <span><fa-icon icon="star" size="s"></fa-icon></span>
+          <span><fa-icon icon="star" size="s"></fa-icon></span>
+        </ion-item>
+        <ion-item>
+          <p>Commisions : 123</p>
+        </ion-item>
+        <ion-item>
+          <p>Average Time/Commission : 2.8 d</p>
+        </ion-item>
+        <ion-button class="card-button" color="primary"><fa-icon icon="thumbs-up" size="sm"></fa-icon></ion-button>
+        <ion-button class="card-button" color="primary">Add to Contacts</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-row>
+            <ion-col>
+              <h4>Post a Request!</h4>
+            </ion-col>
+          </ion-row>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="title">
+          <ion-input name="title" type="text" placeholder="Title" [(ngModel)]="req_title" required></ion-input>
+        </ion-item>
+        <ion-item class="desc">
+          <ion-textarea name="desc" placeholder="Description..." [(ngModel)]="req_desc"></ion-textarea>
+        </ion-item>
+
+        <ion-item class="bid">
+          <ion-input name="bid" type="number" placeholder="Commission Price" [(ngModel)]="req_bid" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-select name="req_type" okText="Okay" cancelText="Dismiss" #C (ionChange)="onChange(C.value)" [(ngModel)]="req_type" placeholder="Set Price Visibility">
+            <ion-select-option value="Buying">Visible</ion-select-option>
+            <ion-select-option value="Selling">Hidden</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="tags">
+          <ion-input name="tags" type="text" placeholder="Tags" [(ngModel)]="req_tags" required></ion-input>
+        </ion-item>
+      </ion-card-content>
+      <ion-button class="card-button" color="primary" (click)="addReq()">Submit</ion-button>
+    </ion-card>
+
+    <ion-item>
+      <ion-row>
+        <ion-col>
+          <h4>Top Public Posts this week</h4>
+        </ion-col>
+      </ion-row>
+    </ion-item>
 
     <ion-card *ngFor="let reqs of reqs | filter : filterTerm">
       <ion-card-header [color]="reqs.req_type == 'Buying' ? 'secondary' : 'tertiary'">
         <ion-card-title>
           <h2>{{reqs.req_title}}</h2>
           <ion-card-subtitle>
-            Request Type : {{reqs.req_type}}
+
+            <!--Request Type : {{reqs.req_type}}-->
           </ion-card-subtitle>
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <img src="../assets/card-img.PNG" alt="" class="card-image" />
+          <img src="../assets/1.png" alt="" class="card-image" />
         </ion-item>
         <ion-item>
           <h4>{{reqs.user_name}}</h4>
@@ -45,12 +156,14 @@
           Tags : {{reqs.req_tags}}
         </ion-item>
 
+
+
         <!--<ion-item>
-          <p>{{reqs.req_type}}</p>
-        </ion-item>-->
-        <ion-item>
-          Bidding Price : {{reqs.req_bid| currency:'₱ ':true:'1.2-2'}}
-        </ion-item>
+        <p>{{reqs.req_type}}</p>
+      </ion-item>-->
+        <!--<ion-item>
+        Bidding Price : {{reqs.req_bid| currency:'₱ ':true:'1.2-2'}}
+      </ion-item>-->
         <ion-item>
           Bumps : {{reqs.req_bump}}
         </ion-item>
@@ -59,8 +172,8 @@
         </ion-item>
 
         <ion-button size="small" class="card-button"><fa-icon icon="thumbs-up" size="sm"></fa-icon></ion-button>
-        <ion-button *ngIf="users.user_id == reqs.user_id" size="small" class="card-button">Edit</ion-button>
-        <ion-button *ngIf="users.user_id == reqs.user_id" size="small" class="card-button" (click)="delReq(reqs.req_id)">Delete</ion-button>
+        <ion-button *ngIf="users.user_id == reqs.user_id" size="small" class="card-button">Editn></ion-button>
+        <ion-button *ngIf="users.user_id == reqs.user_id" size="small" class="card-button" (click)="delReq(reqs.req_id)">eqDelete/i</ion-button>
 
       </ion-card-content>
       <ion-row *ngFor="let com of com">

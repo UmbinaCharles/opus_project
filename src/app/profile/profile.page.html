@@ -5,6 +5,9 @@
         <h4>Profile</h4>
       </ion-col>
       <ion-col>
+        <ion-button class="logout-button" color="secondary" size="small">
+          <fa-icon icon="question-circle" size="sm"></fa-icon>
+        </ion-button>
         <ion-button class="logout-button" color="secondary" size="small" (click)="logout()">
           <fa-icon icon="sign-out-alt" size="sm"></fa-icon>
         </ion-button>
@@ -30,26 +33,51 @@
         <ion-card-subtitle><p>Profile Information</p></ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
-        <ion-item>
-          <p>Interests : {{ users.user_interests }} </p>
+        <!--For Testing-->
+        <ion-item color="secondary" *ngIf="users.user_name == 'erwin'">
+          <p class="speech-text">Verified Account&nbsp;</p><fa-icon icon="check" size="s"></fa-icon>
+        </ion-item>
+        <ion-item color="secondary" *ngIf="users.user_name == 'erwin'">
+          <p class="speech-text">Opus Magnum Awardee&nbsp;</p><fa-icon icon="trophy" size="s"></fa-icon>
         </ion-item>
         <ion-item>
-          <p>Email : {{ users.user_email }} </p>
-        </ion-item>
-        <ion-item>
-          <p>Contact # : {{ users.user_contact }}</p>
-        </ion-item>
-        <ion-item>
-          <p>Stars : &nbsp;</p>
+          <p>Karma : &nbsp;</p>
           <span *ngIf="users.user_trust == 1 || users.user_trust >1"><fa-icon icon="star" size="s"></fa-icon></span>
           <span *ngIf="users.user_trust == 2 || users.user_trust >2"><fa-icon icon="star" size="s"></fa-icon></span>
           <span *ngIf="users.user_trust == 3 || users.user_trust >3"><fa-icon icon="star" size="s"></fa-icon></span>
           <span *ngIf="users.user_trust == 4 || users.user_trust >4"><fa-icon icon="star" size="s"></fa-icon></span>
           <span *ngIf="users.user_trust == 5 || users.user_trust >5"><fa-icon icon="star" size="s"></fa-icon></span>
         </ion-item>
+        <ion-item>
+          <p>Interests : {{ users.user_interests }} </p>
+        </ion-item>
+        <ion-card-subtitle><p>Work Profile</p></ion-card-subtitle>
+        <ion-item>
+          <p>Previous Developer @ Sisko</p>
+        </ion-item>
+        <ion-item>
+          <p>Previous Web Artist @ Graphs</p>
+        </ion-item>
+        <ion-button class="card-button" color="primary">Add Info</ion-button>
+        <ion-item>
+          <p>Commisions Completed : 100</p>
+        </ion-item>
+        <ion-item>
+          <p>Email : {{ users.user_email }} </p>
+        </ion-item>
+        <ion-item>
+          <p>Contact # : {{ users.user_contact }}</p>
+        </ion-item>      
+
+        <ion-item color="danger">
+          <p>Note : Profile Visibility is set to Everyone </p>
+        </ion-item>
+        <ion-button class="card-button" color="primary">Profile Visibility</ion-button>
+        <ion-button class="card-button" (click)="accountNav() " color="primary"> Payment Account Settings</ion-button>
+
       </ion-card-content>
     </ion-card>
-
+      
     <ion-card>
       <ion-card-header>
         <ion-card-title>
@@ -68,16 +96,16 @@
           <ion-textarea name="desc" placeholder="Description..." [(ngModel)]="req_desc"></ion-textarea>
         </ion-item>
         <ion-item>
-          <ion-select name="req_type" okText="Okay" cancelText="Dismiss" #C (ionChange)="onChange(C.value)" [(ngModel)]="req_type" placeholder="Buying or Selling?">
-            <ion-select-option value="Buying">Buying</ion-select-option>
-            <ion-select-option value="Selling">Selling</ion-select-option>
+          <ion-select name="req_type" okText="Okay" cancelText="Dismiss" #C (ionChange)="onChange(C.value)" [(ngModel)]="req_type" placeholder="Set Visibility">
+            <ion-select-option value="Buying">Everyone</ion-select-option>
+            <ion-select-option value="Selling">Contacts</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item class="bid">
           <ion-input name="bid" type="number" placeholder="Bidding Price" [(ngModel)]="req_bid" required></ion-input>
         </ion-item>
         <ion-item class="tags">
-          <ion-input name="tags" type="text" placeholder="Tags" [(ngModel)]="req_tags" required></ion-input>
+          <ion-input name="tags" type="file" placeholder="Tags" [(ngModel)]="req_tags" required></ion-input>
         </ion-item>
       </ion-card-content>
       <ion-button class="card-button" color="primary" (click)="addReq()">Submit</ion-button>
@@ -92,9 +120,11 @@
     </ion-row>
 
     <ion-row>
-      <ion-item>
-        <ion-searchbar animated autocomplete placeholder="Search..." [(ngModel)]="filterTerm"></ion-searchbar>
-      </ion-item>
+      <ion-col>
+        <ion-item>
+          <ion-searchbar autocomplete placeholder="Search..." [(ngModel)]="filterTerm"></ion-searchbar>
+        </ion-item>
+      </ion-col>      
     </ion-row>
 
     <ion-card *ngFor="let reqs of reqs | filter : filterTerm">
@@ -102,13 +132,14 @@
         <ion-card-title>
           <h2>{{reqs.req_title}}</h2>
           <ion-card-subtitle>
-            Request Type : {{reqs.req_type}}
+            
+            <!--{{reqs.req_type}}-->
           </ion-card-subtitle>
         </ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <ion-item>
-          <img src="../assets/card-img.PNG" alt="" class="card-image" />
+          <img src="../assets/111.jpg" alt="" class="card-image" />
         </ion-item>
         <ion-item>
           <h4>{{reqs.req_desc}}</h4>
@@ -120,9 +151,9 @@
         <!--<ion-item>
         <p>{{reqs.req_type}}</p>
       </ion-item>-->
-        <ion-item>
+        <!--<ion-item>
           Bidding Price : {{reqs.req_bid| currency:'₱ ':true:'1.2-2'}}
-        </ion-item>
+        </ion-item>-->
         <ion-item>
           Bumps : {{reqs.req_bump}}
         </ion-item>
@@ -148,7 +179,7 @@
         <ion-textarea name="con" placeholder="Comment..." [(ngModel)]="com_con"></ion-textarea>
       </ion-item>
 
-      <ion-button size="small" class="card-button" (click)="addCom(reqs.req_id)">Comment</ion-button>
+      <ion-button size="small" class="card-button" routerLink="/acountsettings">Comment</ion-button>
     </ion-card>
 
     <!--<ion-button class="back" (click)="gotToTop()"><ion-icon name="chevron-up-outline"></ion-icon></ion-button>-->

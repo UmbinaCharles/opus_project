@@ -22,7 +22,12 @@ const routes: Routes = [
     path:'',
     redirectTo: 'login',
     pathMatch: 'full'
-  }  
+  },
+  {
+    path: 'acountsettings',
+    loadChildren: () => import('./acountsettings/acountsettings.module').then( m => m.AcountsettingsPageModule)
+  }
+ 
 ];
 @NgModule({
   imports: [
